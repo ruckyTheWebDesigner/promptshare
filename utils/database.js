@@ -2,9 +2,6 @@ import mongoose from "mongoose";
 
 let isConnected = false; // track the connection
 
-const url =
-  "mongodb+srv://PromptShare:PromptShare@cluster0.pbipa41.mongodb.net/?retryWrites=true&w=majority";
-
 export const connectToDB = async () => {
   mongoose.set("strictQuery", true);
 
@@ -14,7 +11,7 @@ export const connectToDB = async () => {
   }
 
   try {
-    await mongoose.connect(url, {
+    await mongoose.connect(process.env.NEXT_PUBLIC_MONGODB_URI, {
       dbName: "Cluster0",
       useNewUrlParser: true,
       useUnifiedTopology: true,
